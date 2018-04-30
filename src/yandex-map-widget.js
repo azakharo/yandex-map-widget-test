@@ -2,7 +2,7 @@
 
 export default {
 
-  load(src) {
+  loadApi(src) {
     src = src || '//api-maps.yandex.ru/2.1/?lang=en_RU';
 
     const getNsParamValue = () => {

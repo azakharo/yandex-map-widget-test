@@ -6,11 +6,11 @@ import './App.css';
 class App extends Component {
 
   componentDidMount() {
-    mapWidjet.load()
-      .then(maps => {
+    mapWidjet.loadApi()
+      .then(() => {
         mapWidjet.createMap('mymap', [54.94873814863049, 43.33372592926026], 16);
       })
-      .catch(error => console.log('Failed to load Yandex Maps', error));
+      .catch(error => console.error(error));
   }
 
   render() {
