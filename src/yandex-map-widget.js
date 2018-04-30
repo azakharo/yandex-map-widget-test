@@ -52,12 +52,20 @@ export default {
 };
 
 function createPlacemarks(map, points) {
+  const placemarks = new ymaps.GeoObjectCollection();
+
   points.forEach(p => {
     const marker = new ymaps.Placemark([p.lat, p.lon], {
       hintContent: p.name,
       balloonContent: p.desc
     });
 
-    map.geoObjects.add(marker);
+    placemarks.add(marker);
   });
+
+  map.geoObjects.add(placemarks);
+
+  if (points.length > 1) {
+    map.setBounds(placemarks.getBounds());
+  }
 }
