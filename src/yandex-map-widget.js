@@ -1,5 +1,7 @@
 /* global ymaps */
+
 export default {
+
   load(src) {
     src = src || '//api-maps.yandex.ru/2.1/?lang=en_RU';
 
@@ -29,5 +31,13 @@ export default {
       });
 
     return this.promise;
+  },
+
+  createMap(mapContainerID, center, zoom) {
+    new ymaps.Map(mapContainerID, {
+      center,
+      zoom
+    });
   }
+
 };
