@@ -34,10 +34,15 @@ export default {
   },
 
   createMap(mapContainerID, center, zoom) {
-    new ymaps.Map(mapContainerID, {
-      center,
-      zoom
-    });
+    if (window.ymaps !== undefined) {
+      new ymaps.Map(mapContainerID, {
+        center,
+        zoom
+      });
+    }
+    else {
+      throw new Error('The map API is NOT loaded yet');
+    }
   }
 
 };
