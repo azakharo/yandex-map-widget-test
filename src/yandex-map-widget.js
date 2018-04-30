@@ -33,16 +33,27 @@ export default {
     return this.promise;
   },
 
-  createMap(mapContainerID, center, zoom, points) {
+  createMap(mapContainerID, points) {
     if (window.ymaps !== undefined) {
+      let center = [55.751430, 37.618832];
+      const zoom = 16;
+
+      if (points.length === 1) {
+        center = [points[0].lat, points[0].lon];
+      }
+
       const map = new ymaps.Map(mapContainerID, {
         center,
         zoom
       });
 
-      if (Array.isArray(points) && points.length > 0) {
-        createPlacemarks(map, points);
+      const placemarks = createPlacemarks(points);
+      map.geoObjects.add(placemarks);
+
+      if (points.length > 1) {
+        map.setBounds(placemarks.getBounds());
       }
+
     }
     else {
       throw new Error('The map API is NOT loaded yet');
@@ -51,7 +62,7 @@ export default {
 
 };
 
-function createPlacemarks(map, points) {
+function createPlacemarks(points) {
   const placemarks = new ymaps.GeoObjectCollection();
 
   points.forEach(p => {
@@ -63,9 +74,5 @@ function createPlacemarks(map, points) {
     placemarks.add(marker);
   });
 
-  map.geoObjects.add(placemarks);
-
-  if (points.length > 1) {
-    map.setBounds(placemarks.getBounds());
-  }
+  return placemarks;
 }

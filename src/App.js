@@ -8,7 +8,7 @@ class App extends Component {
   componentDidMount() {
     mapWidjet.loadApi()
       .then(() => {
-        mapWidjet.createMap('mymap', [54.94873814863049, 43.33372592926026], 16,
+        mapWidjet.createMap('mymap',
           [
             {
               name: 'Лесная',
