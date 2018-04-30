@@ -3,7 +3,7 @@
 export default {
 
   loadApi(src) {
-    src = src || '//api-maps.yandex.ru/2.1/?lang=en_RU';
+    src = src || '//api-maps.yandex.ru/2.1/?lang=ru_RU';
 
     const getNsParamValue = () => {
       var results = RegExp('[\\?&]ns=([^&#]*)').exec(src);
@@ -33,12 +33,16 @@ export default {
     return this.promise;
   },
 
-  createMap(mapContainerID, center, zoom) {
+  createMap(mapContainerID, center, zoom, points) {
     if (window.ymaps !== undefined) {
-      new ymaps.Map(mapContainerID, {
+      const map = new ymaps.Map(mapContainerID, {
         center,
         zoom
       });
+
+      if (Array.isArray(points) && points.length > 0) {
+        createPlacemarks(map, points);
+      }
     }
     else {
       throw new Error('The map API is NOT loaded yet');
@@ -46,3 +50,14 @@ export default {
   }
 
 };
+
+function createPlacemarks(map, points) {
+  points.forEach(p => {
+    const marker = new ymaps.Placemark([p.lat, p.lon], {
+      hintContent: p.name,
+      balloonContent: p.desc
+    });
+
+    map.geoObjects.add(marker);
+  });
+}
