@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import mapWidjet from './yandex-map-widget';
+import mapWidjet from 'yandex-map-widget';
 import './App.css';
 
 
