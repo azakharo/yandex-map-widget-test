@@ -51,6 +51,10 @@ export default {
         zoom
       });
 
+      map.events.add('actionbegin', () => {
+        Tooltip.hide();
+      });
+
       const placemarks = createPlacemarks(points);
       map.geoObjects.add(placemarks);
 
@@ -148,7 +152,10 @@ var Tooltip = {
   },
 
   hide: function() {
-    Tooltip.tooltip.className = Tooltip.tooltip.className.replace('show', '');
+    const tooltip = Tooltip.tooltip;
+    if (tooltip) {
+      tooltip.className = tooltip.className.replace('show', '');
+    }
   }
 
 };
