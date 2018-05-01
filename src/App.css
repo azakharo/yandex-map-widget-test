@@ -33,7 +33,7 @@
   to { transform: rotate(360deg); }
 }
 
-#tooltip {
+#ymap-widget-tooltip {
   opacity: 0;
   text-align: center;
   color: #fff;
@@ -45,21 +45,21 @@
   border-radius: 5px;
 }
 
-#tooltip.top {
+#ymap-widget-tooltip.top {
   margin-top: 20px;
 }
 
-#tooltip.show {
+#ymap-widget-tooltip.show {
   opacity: 1;
   margin-top: 10px;
   pointer-events: all;
 }
 
-#tooltip.show.top {
+#ymap-widget-tooltip.show.top {
   margin-top: 10px;
 }
 
-#tooltip:after {
+#ymap-widget-tooltip:after {
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
@@ -72,19 +72,19 @@
   margin-left: -10px;
 }
 
-#tooltip.top:after {
+#ymap-widget-tooltip.top:after {
   border-top-color: transparent;
   border-bottom: 10px solid rgba(0, 0, 0, 0.6);
   top: -20px;
   bottom: auto;
 }
 
-#tooltip.left:after {
+#ymap-widget-tooltip.left:after {
   left: 10px;
   margin: 0;
 }
 
-#tooltip.right:after {
+#ymap-widget-tooltip.right:after {
   right: 10px;
   left: auto;
   margin: 0;

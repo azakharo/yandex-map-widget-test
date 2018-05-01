@@ -25,6 +25,9 @@ export default {
         if (ns && ns !== 'ymaps') {
           (1, eval)(`var ymaps = ${ns};`); // eslint-disable-line
         }
+
+        Tooltip.init();
+
         return new Promise(resolve => {
           ymaps.ready(resolve)
         });
@@ -61,9 +64,6 @@ export default {
       if (points.length > 1) {
         map.setBounds(placemarks.getBounds());
       }
-
-      Tooltip.bindEvents();
-
     }
     else {
       throw new Error('The map API is NOT loaded yet');
@@ -96,9 +96,15 @@ var Tooltip = {
   tooltip: undefined,
   point: null,
 
-  bindEvents: function() {
-    Tooltip.tooltip = document.getElementById('tooltip');
-    Tooltip.tooltip.addEventListener('click', Tooltip.hide);
+  init: function() {
+    const tooltip = document.createElement('div');
+    Tooltip.tooltip = tooltip;
+
+    tooltip.id = 'ymap-widget-tooltip';
+    document.body.appendChild(tooltip);
+
+    tooltip.addEventListener('click', Tooltip.hide);
+
     window.addEventListener('resize', Tooltip.hide);
 
     document.addEventListener("click", function(e){

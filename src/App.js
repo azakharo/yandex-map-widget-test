@@ -55,7 +55,6 @@ class App extends Component {
       <div className="App">
         <div id="mymap" className="App-intro"></div>
         <div id="mymap2" className="App-intro2"></div>
-        <div id="tooltip"></div>
       </div>
     );
   }
