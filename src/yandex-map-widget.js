@@ -98,7 +98,7 @@ var Tooltip = {
 
   init: () => {
     Tooltip.defineTooltipStyles();
-    
+
     const tooltip = document.createElement('div');
     Tooltip.tooltip = tooltip;
 
@@ -119,10 +119,27 @@ var Tooltip = {
   },
 
   show: (x, y) => {
-    const tip = Tooltip.point.name;
+    const point = Tooltip.point;
     const tooltip = Tooltip.tooltip;
 
-    tooltip.innerHTML = tip ;
+    tooltip.innerHTML = `
+<div class="ymap-widget-tooltip-content">
+  <div class="point-name">${point.name}</div>
+  <div>${point.desc}</div>
+  <div>
+    <span>Адрес: </span>
+    <span>${point.address}</span>
+  </div>
+  <div>
+    <span>Телефон:</span>
+    <span>${point.tel}</span>
+  </div>
+  <div>
+    <span>Сайт: </span>
+    <a href="${point.site}" target="_blank" rel="noopener noreferrer" class="point-site">${point.site}</a>
+  </div>
+</div>
+`;
 
     if( window.innerWidth < tooltip.offsetWidth * 1.5 ) {
       tooltip.style.maxWidth = (window.innerWidth / 2) + 'px';
@@ -225,6 +242,20 @@ var Tooltip = {
   right: 10px;
   left: auto;
   margin: 0;
+}
+
+.ymap-widget-tooltip-content {
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.ymap-widget-tooltip-content .point-name {
+  color: #21f2ff;
+  font-size: large;
+}
+
+.ymap-widget-tooltip-content .point-site {
+  color: #88a3ff;
 }
     `));
     document.getElementsByTagName('head')[0].appendChild(style);

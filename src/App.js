@@ -11,22 +11,31 @@ class App extends Component {
         mapWidjet.createMap('mymap',
           [
             {
-              name: 'Лесная',
-              desc: 'точка 1',
+              name: 'Лесная поляна',
+              desc: 'место отдыха молодёжи',
               lat: 54.934095,
-              lon: 43.305741
+              lon: 43.305741,
+              address: 'Лесная, 21',
+              tel: '91659',
+              site: 'http://sarov.info'
             },
             {
-              name: 'Берёзовая',
-              desc: 'точка 2',
+              name: 'Берёзовая роща',
+              desc: 'парк',
               lat: 54.948128,
-              lon: 43.331607
+              lon: 43.331607,
+              address: 'Берёзовая, 6',
+              tel: '97527',
+              site: 'https://sarov-itc.ru'
             },
             {
-              name: 'Шверника',
-              desc: 'точка 3',
+              name: 'Улица коммунистов',
+              desc: 'историческое место',
               lat: 54.916773,
-              lon: 43.337682
+              lon: 43.337682,
+              address: 'Шверника, 9',
+              tel: '69091',
+              site: 'http://sarov.net/news'
             }
           ]);
 
@@ -36,13 +45,19 @@ class App extends Component {
               name: 'Грудцино1',
               desc: 'точка 1',
               lat: 55.934095,
-              lon: 43.305741
+              lon: 43.305741,
+              address: 'Огурцова, 5',
+              tel: '55091',
+              site: 'https://news.yandex.ru'
             },
             {
-              name: 'Грудцино2',
+              name: 'Володинские пруды',
               desc: 'точка 2',
               lat: 55.948128,
-              lon: 43.331607
+              lon: 43.331607,
+              address: 'Белоусова, 15',
+              tel: '23691',
+              site: 'http://soccer365.ru'
             }
           ]);
 
