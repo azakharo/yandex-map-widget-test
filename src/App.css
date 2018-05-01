@@ -23,6 +23,11 @@
   height: 400px;
 }
 
+.App-intro2 {
+  width: 480px;
+  height: 480px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

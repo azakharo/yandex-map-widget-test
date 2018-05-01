@@ -29,6 +29,23 @@ class App extends Component {
               lon: 43.337682
             }
           ]);
+
+        mapWidjet.createMap('mymap2',
+          [
+            {
+              name: 'Грудцино1',
+              desc: 'точка 1',
+              lat: 55.934095,
+              lon: 43.305741
+            },
+            {
+              name: 'Грудцино2',
+              desc: 'точка 2',
+              lat: 55.948128,
+              lon: 43.331607
+            }
+          ]);
+
       })
       .catch(error => console.error(error));
   }
@@ -37,6 +54,7 @@ class App extends Component {
     return (
       <div className="App">
         <div id="mymap" className="App-intro"></div>
+        <div id="mymap2" className="App-intro2"></div>
       </div>
     );
   }
