@@ -96,7 +96,9 @@ var Tooltip = {
   tooltip: undefined,
   point: null,
 
-  init: function() {
+  init: () => {
+    Tooltip.defineTooltipStyles();
+    
     const tooltip = document.createElement('div');
     Tooltip.tooltip = tooltip;
 
@@ -116,7 +118,7 @@ var Tooltip = {
     });
   },
 
-  show: function(x, y) {
+  show: (x, y) => {
     const tip = Tooltip.point.name;
     const tooltip = Tooltip.tooltip;
 
@@ -157,11 +159,75 @@ var Tooltip = {
     tooltip.className += ' show';
   },
 
-  hide: function() {
+  hide: () => {
     const tooltip = Tooltip.tooltip;
     if (tooltip) {
       tooltip.className = tooltip.className.replace('show', '');
     }
+  },
+
+  defineTooltipStyles: () => {
+    const style=document.createElement('style');
+    style.type='text/css';
+    style.appendChild(document.createTextNode(`
+#ymap-widget-tooltip {
+  opacity: 0;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  z-index: 100;
+  padding: 15px;
+  pointer-events: none;
+  border-radius: 5px;
+}
+
+#ymap-widget-tooltip.top {
+  margin-top: 20px;
+}
+
+#ymap-widget-tooltip.show {
+  opacity: 1;
+  margin-top: 10px;
+  pointer-events: all;
+}
+
+#ymap-widget-tooltip.show.top {
+  margin-top: 10px;
+}
+
+#ymap-widget-tooltip:after {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(0, 0, 0, 0.6);
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  margin-left: -10px;
+}
+
+#ymap-widget-tooltip.top:after {
+  border-top-color: transparent;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.6);
+  top: -20px;
+  bottom: auto;
+}
+
+#ymap-widget-tooltip.left:after {
+  left: 10px;
+  margin: 0;
+}
+
+#ymap-widget-tooltip.right:after {
+  right: 10px;
+  left: auto;
+  margin: 0;
+}
+    `));
+    document.getElementsByTagName('head')[0].appendChild(style);
   }
 
 };
