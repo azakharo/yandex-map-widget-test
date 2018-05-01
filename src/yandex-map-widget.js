@@ -42,6 +42,10 @@ export default {
         center = [points[0].lat, points[0].lon];
       }
 
+      const mapContainer = document.getElementById(mapContainerID);
+      mapContainer.style.minWidth = "320px";
+      mapContainer.style.minHeight = "480px";
+
       const map = new ymaps.Map(mapContainerID, {
         center,
         zoom
