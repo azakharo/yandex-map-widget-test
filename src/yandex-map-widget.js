@@ -67,8 +67,12 @@ function createPlacemarks(points) {
 
   points.forEach(p => {
     const marker = new ymaps.Placemark([p.lat, p.lon], {
-      hintContent: p.name,
-      balloonContent: p.desc
+      hintContent: p.name
+      // balloonContent: p.desc
+    });
+
+    marker.events.add('click', function (e) {
+      console.log(e);
     });
 
     placemarks.add(marker);
