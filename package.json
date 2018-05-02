@@ -6,7 +6,7 @@
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "react-scripts": "1.1.4",
-    "yandex-map-widget": "1.0.1"
+    "yandex-map-widget": "1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

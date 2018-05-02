@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'yandex-map-widget/dist/yandex-map-widget.css';
 import mapWidjet from 'yandex-map-widget';
 import './App.css';
 
